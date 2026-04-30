@@ -13,7 +13,7 @@ body {
   text-align: center;
 }
 
-/* назад */
+/* кнопка назад */
 .back {
   position: fixed;
   top: 10px;
@@ -29,7 +29,6 @@ body {
   color: black;
   padding: 10px;
   border-radius: 8px;
-  font-weight: bold;
 }
 
 /* логотип */
@@ -51,15 +50,10 @@ button {
   background: white;
   color: black;
   border: none;
-  padding: 12px 20px;
+  padding: 12px;
   margin: 10px;
   border-radius: 8px;
-  font-weight: bold;
   cursor: pointer;
-}
-
-button:hover {
-  background: #ccc;
 }
 
 /* товар */
@@ -84,14 +78,17 @@ button:hover {
 
 <body>
 
+<!-- назад -->
 <div class="back">
-  <button onclick="show('home')">← Назад</button>
+  <button onclick="showSection('home')">← Назад</button>
 </div>
 
+<!-- підтримка -->
 <div class="support">
   Підтримка<br>676-6767-6767
 </div>
 
+<!-- логотип -->
 <div class="logo">
   3BESTSHOP-UA
 </div>
@@ -99,18 +96,18 @@ button:hover {
 <!-- ГОЛОВНА -->
 <div id="home" class="section" style="display:block;">
   <h1>Ласкаво просимо 👋</h1>
-  <button onclick="show('catalog')">Каталог</button>
+  <button onclick="showSection('catalog')">Каталог</button>
 </div>
 
 <!-- КАТАЛОГ -->
 <div id="catalog" class="section">
   <h2>Каталог</h2>
 
-  <button onclick="show('tshirts')">Футболки</button>
-  <button onclick="show('shorts')">Шорти</button>
-  <button onclick="show('jeans')">Джинси</button>
-  <button onclick="show('hoodie')">Кофти</button>
-  <button onclick="show('shoes')">Кросівки</button>
+  <button onclick="showSection('tshirts')">Футболки</button>
+  <button onclick="showSection('shorts')">Шорти</button>
+  <button onclick="showSection('jeans')">Джинси</button>
+  <button onclick="showSection('hoodie')">Кофти</button>
+  <button onclick="showSection('shoes')">Кросівки</button>
 </div>
 
 <!-- ФУТБОЛКИ -->
@@ -121,10 +118,7 @@ button:hover {
     <img src="tshirt1.png">
 
     <p>Футболка Hell Star</p>
-    <p>Колір: білий</p>
-    <p>Розміри: S, M</p>
     <p>Ціна: 799 грн</p>
-    <p>Стильний дизайн, топ якість 🔥</p>
 
     <button onclick="showSize(this)">Замовити</button>
 
@@ -144,15 +138,10 @@ button:hover {
 
   <div class="product">
     <img src="shorts1.png">
-
-    <p>Шорти Burberry</p>
-    <p>Колір: чорні / білі</p>
-    <p>Розміри: M, L</p>
-    <p>Ціна: 650 грн</p>
-    <p>Комфорт і стиль на літо 🔥</p>
+    <p>Burberry</p>
+    <p>650 грн</p>
 
     <button onclick="showSize(this)">Замовити</button>
-
     <div class="size">
       <button onclick="buy()">XS</button>
       <button onclick="buy()">S</button>
@@ -164,15 +153,10 @@ button:hover {
 
   <div class="product">
     <img src="shorts2.png">
-
-    <p>Шорти Balenciaga x Guess</p>
-    <p>Колір: чорні / білі</p>
-    <p>Розміри: M, L</p>
-    <p>Ціна: 1399 грн</p>
-    <p>Преміум стиль 💎</p>
+    <p>Balenciaga x Guess</p>
+    <p>1399 грн</p>
 
     <button onclick="showSize(this)">Замовити</button>
-
     <div class="size">
       <button onclick="buy()">XS</button>
       <button onclick="buy()">S</button>
@@ -189,15 +173,10 @@ button:hover {
 
   <div class="product">
     <img src="jeans1.png">
-
-    <p>Джинси Gallery Dept</p>
-    <p>Колір: сірі</p>
-    <p>Розміри: S, M, L</p>
-    <p>Ціна: 1199 грн</p>
-    <p>Стильні, щільна тканина 🔥</p>
+    <p>Gallery Dept</p>
+    <p>1199 грн</p>
 
     <button onclick="showSize(this)">Замовити</button>
-
     <div class="size">
       <button onclick="buy()">XS</button>
       <button onclick="buy()">S</button>
@@ -214,3 +193,43 @@ button:hover {
 
   <div class="product">
     <img src="hoodie1.png">
+    <p>Gucci x Balenciaga</p>
+    <p>1199 грн</p>
+
+    <button onclick="showSize(this)">Замовити</button>
+    <div class="size">
+      <button onclick="buy()">XS</button>
+      <button onclick="buy()">S</button>
+      <button onclick="buy()">M</button>
+      <button onclick="buy()">L</button>
+      <button onclick="buy()">XL</button>
+    </div>
+  </div>
+</div>
+
+<!-- СКРИПТ -->
+<script>
+function showSection(id) {
+  let sections = document.querySelectorAll('.section');
+  sections.forEach(function(el) {
+    el.style.display = 'none';
+  });
+
+  let active = document.getElementById(id);
+  if (active) {
+    active.style.display = 'block';
+  }
+}
+
+function showSize(btn) {
+  btn.nextElementSibling.style.display = 'block';
+}
+
+function buy() {
+  window.open("https://t.me/planar3", "_blank");
+}
+</script>
+
+</body>
+</html>
+
