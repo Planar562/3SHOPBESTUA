@@ -10,13 +10,14 @@ body {
   color: white;
   font-family: Arial;
   margin: 0;
+  text-align: center;
 }
 
-/* меню */
-.menu {
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
+/* назад */
+.back {
+  position: fixed;
+  top: 10px;
+  left: 10px;
 }
 
 /* підтримка */
@@ -27,27 +28,22 @@ body {
   background: white;
   color: black;
   padding: 10px;
-  font-weight: bold;
   border-radius: 8px;
+  font-weight: bold;
 }
 
-/* блоки */
+/* логотип */
+.logo {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-weight: bold;
+}
+
+/* секції */
 .section {
   display: none;
-  padding: 20px;
-}
-
-/* товар */
-.product {
-  border: 1px solid white;
-  padding: 15px;
-  margin: 15px;
-  width: 200px;
-}
-
-/* картинки */
-.product img {
-  width: 100%;
+  padding-top: 80px;
 }
 
 /* кнопки */
@@ -55,15 +51,27 @@ button {
   background: white;
   color: black;
   border: none;
-  padding: 10px;
-  margin-top: 5px;
-  cursor: pointer;
-  border-radius: 6px;
+  padding: 12px 20px;
+  margin: 10px;
+  border-radius: 8px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
   background: #ccc;
+}
+
+/* товар */
+.product {
+  border: 1px solid white;
+  padding: 15px;
+  margin: 20px auto;
+  width: 220px;
+}
+
+.product img {
+  width: 100%;
 }
 
 /* розміри */
@@ -76,19 +84,25 @@ button:hover {
 
 <body>
 
-<!-- підтримка -->
-<div class="support">
-  Підтримка<br>
-  676-6767-6767
+<div class="back">
+  <button onclick="show('home')">← Назад</button>
 </div>
 
-<!-- головна -->
+<div class="support">
+  Підтримка<br>676-6767-6767
+</div>
+
+<div class="logo">
+  3BESTSHOP-UA
+</div>
+
+<!-- ГОЛОВНА -->
 <div id="home" class="section" style="display:block;">
   <h1>Ласкаво просимо 👋</h1>
   <button onclick="show('catalog')">Каталог</button>
 </div>
 
-<!-- каталог -->
+<!-- КАТАЛОГ -->
 <div id="catalog" class="section">
   <h2>Каталог</h2>
 
@@ -105,8 +119,12 @@ button:hover {
 
   <div class="product">
     <img src="tshirt1.png">
-    <p>Hell Star</p>
-    <p>799 грн</p>
+
+    <p>Футболка Hell Star</p>
+    <p>Колір: білий</p>
+    <p>Розміри: S, M</p>
+    <p>Ціна: 799 грн</p>
+    <p>Стильний дизайн, топ якість 🔥</p>
 
     <button onclick="showSize(this)">Замовити</button>
 
@@ -118,7 +136,6 @@ button:hover {
       <button onclick="buy()">XL</button>
     </div>
   </div>
-
 </div>
 
 <!-- ШОРТИ -->
@@ -127,8 +144,12 @@ button:hover {
 
   <div class="product">
     <img src="shorts1.png">
-    <p>Burberry</p>
-    <p>650 грн</p>
+
+    <p>Шорти Burberry</p>
+    <p>Колір: чорні / білі</p>
+    <p>Розміри: M, L</p>
+    <p>Ціна: 650 грн</p>
+    <p>Комфорт і стиль на літо 🔥</p>
 
     <button onclick="showSize(this)">Замовити</button>
 
@@ -143,8 +164,12 @@ button:hover {
 
   <div class="product">
     <img src="shorts2.png">
-    <p>Balenciaga x Guess</p>
-    <p>1399 грн</p>
+
+    <p>Шорти Balenciaga x Guess</p>
+    <p>Колір: чорні / білі</p>
+    <p>Розміри: M, L</p>
+    <p>Ціна: 1399 грн</p>
+    <p>Преміум стиль 💎</p>
 
     <button onclick="showSize(this)">Замовити</button>
 
@@ -156,26 +181,37 @@ button:hover {
       <button onclick="buy()">XL</button>
     </div>
   </div>
-
 </div>
 
-<!-- СКРИПТ -->
-<script>
+<!-- ДЖИНСИ -->
+<div id="jeans" class="section">
+  <h2>Джинси</h2>
 
-function show(id) {
-  document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-}
+  <div class="product">
+    <img src="jeans1.png">
 
-function showSize(btn) {
-  btn.nextElementSibling.style.display = 'block';
-}
+    <p>Джинси Gallery Dept</p>
+    <p>Колір: сірі</p>
+    <p>Розміри: S, M, L</p>
+    <p>Ціна: 1199 грн</p>
+    <p>Стильні, щільна тканина 🔥</p>
 
-function buy() {
-  window.open("https://t.me/planar3", "_blank");
-}
+    <button onclick="showSize(this)">Замовити</button>
 
-</script>
+    <div class="size">
+      <button onclick="buy()">XS</button>
+      <button onclick="buy()">S</button>
+      <button onclick="buy()">M</button>
+      <button onclick="buy()">L</button>
+      <button onclick="buy()">XL</button>
+    </div>
+  </div>
+</div>
 
-</body>
-</html>
+<!-- КОФТИ -->
+<div id="hoodie" class="section">
+  <h2>Кофти</h2>
+
+  <div class="product">
+    <img src="hoodie1.png">
+
