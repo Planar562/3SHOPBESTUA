@@ -1,131 +1,181 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>Мій магазин</title>
+<title>3BESTSHOP</title>
 
 <style>
 body {
+  background: black;
+  color: white;
   font-family: Arial;
   margin: 0;
-  text-align: center;
-  background: #f5f5f5;
 }
 
+/* меню */
 .menu {
-  background: black;
   padding: 15px;
+  display: flex;
+  justify-content: space-between;
 }
 
-.menu button {
-  margin: 5px;
-  padding: 10px 20px;
-  color: white;
-  background: gray;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.menu button:hover {
-  background: darkgray;
-}
-
-.product {
-  border: 1px solid #ccc;
-  margin: 15px;
-  padding: 10px;
-  display: inline-block;
-  width: 220px;
+/* підтримка */
+.support {
+  position: fixed;
+  top: 10px;
+  right: 10px;
   background: white;
-  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+/* блоки */
+.section {
+  display: none;
+  padding: 20px;
+}
+
+/* товар */
+.product {
+  border: 1px solid white;
+  padding: 15px;
+  margin: 15px;
+  width: 200px;
+}
+
+/* картинки */
+.product img {
+  width: 100%;
+}
+
+/* кнопки */
+button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+button:hover {
+  background: #ccc;
+}
+
+/* розміри */
+.size {
+  display: none;
 }
 </style>
 
 </head>
+
 <body>
 
-<!-- МЕНЮ -->
-<div class="menu">
-  <button onclick="showSection('home')">Привіт</button>
-  <button onclick="showSection('catalog')">Каталог</button>
-  <button onclick="showSection('support')">Підтримка</button>
+<!-- підтримка -->
+<div class="support">
+  Підтримка<br>
+  676-6767-6767
 </div>
 
-<!-- ГОЛОВНА -->
-<div id="home">
-  <h1>Привіт 👋</h1>
-  <p>Ласкаво просимо в магазин</p>
+<!-- головна -->
+<div id="home" class="section" style="display:block;">
+  <h1>Ласкаво просимо 👋</h1>
+  <button onclick="show('catalog')">Каталог</button>
 </div>
 
-<!-- КАТАЛОГ -->
-<div id="catalog" style="display:none;">
+<!-- каталог -->
+<div id="catalog" class="section">
+  <h2>Каталог</h2>
 
-<h2>Каталог товарів</h2>
-
-<div class="product">
-  <img src="shorts1.jpg" width="200">
-  <h3>Шорти Burberry</h3>
-  <p>Розміри: M, L<br>Кольори: чорний, білий</p>
-  <p><b>650 грн</b></p>
-  <a href="https://t.me/planar3">Написати</a>
+  <button onclick="show('tshirts')">Футболки</button>
+  <button onclick="show('shorts')">Шорти</button>
+  <button onclick="show('jeans')">Джинси</button>
+  <button onclick="show('hoodie')">Кофти</button>
+  <button onclick="show('shoes')">Кросівки</button>
 </div>
 
-<div class="product">
-  <img src="shorts2.jpg" width="200">
-  <h3>Шорти Balenciaga x Guess</h3>
-  <p>Розміри: M, L<br>Кольори: чорний, білий</p>
-  <p><b>1399 грн</b></p>
-  <a href="https://t.me/planar3">Написати</a>
-</div>
+<!-- ФУТБОЛКИ -->
+<div id="tshirts" class="section">
+  <h2>Футболки</h2>
 
-<div class="product">
-  <img src="tshirt1.jpg" width="200">
-  <h3>Футболка Hell Star</h3>
-  <p>Розміри: S, M</p>
-  <p><b>799 грн</b></p>
-  <a href="https://t.me/ТВОЙ_НИК">Написати</a>
-</div>
+  <div class="product">
+    <img src="tshirt1.png">
+    <p>Hell Star</p>
+    <p>799 грн</p>
 
-<div class="product">
-  <img src="tshirt2.jpg" width="200">
-  <h3>Футболка Hell Star</h3>
-  <p>Розміри: S, M</p>
-  <p><b>799 грн</b></p>
-  <a href="https://t.me/planar3">Написати</a>
-</div>
+    <button onclick="showSize(this)">Замовити</button>
 
-<div class="product">
-  <img src="hoodie.jpg" width="200">
-  <h3>Кофта Gucci x Balenciaga</h3>
-  <p><b>1199 грн</b></p>
-  <a href="https://t.me/planar3">Написати</a>
-</div>
-
-<p style="margin-top:20px;">
-🎁 Без передоплати + знижка 250 грн
-</p>
+    <div class="size">
+      <button onclick="buy()">XS</button>
+      <button onclick="buy()">S</button>
+      <button onclick="buy()">M</button>
+      <button onclick="buy()">L</button>
+      <button onclick="buy()">XL</button>
+    </div>
+  </div>
 
 </div>
 
-<!-- ПІДТРИМКА -->
-<div id="support" style="display:none;">
-  <h2>Підтримка</h2>
-  <p>Пиши нам у Telegram 👇</p>
-  <a href="https://t.me/planar3">Відкрити Telegram</a>
+<!-- ШОРТИ -->
+<div id="shorts" class="section">
+  <h2>Шорти</h2>
+
+  <div class="product">
+    <img src="shorts1.png">
+    <p>Burberry</p>
+    <p>650 грн</p>
+
+    <button onclick="showSize(this)">Замовити</button>
+
+    <div class="size">
+      <button onclick="buy()">XS</button>
+      <button onclick="buy()">S</button>
+      <button onclick="buy()">M</button>
+      <button onclick="buy()">L</button>
+      <button onclick="buy()">XL</button>
+    </div>
+  </div>
+
+  <div class="product">
+    <img src="shorts2.png">
+    <p>Balenciaga x Guess</p>
+    <p>1399 грн</p>
+
+    <button onclick="showSize(this)">Замовити</button>
+
+    <div class="size">
+      <button onclick="buy()">XS</button>
+      <button onclick="buy()">S</button>
+      <button onclick="buy()">M</button>
+      <button onclick="buy()">L</button>
+      <button onclick="buy()">XL</button>
+    </div>
+  </div>
+
 </div>
 
 <!-- СКРИПТ -->
 <script>
-function showSection(section) {
-  document.getElementById('home').style.display = 'none';
-  document.getElementById('catalog').style.display = 'none';
-  document.getElementById('support').style.display = 'none';
 
-  document.getElementById(section).style.display = 'block';
+function show(id) {
+  document.querySelectorAll('.section').forEach(el => el.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
+
+function showSize(btn) {
+  btn.nextElementSibling.style.display = 'block';
+}
+
+function buy() {
+  window.open("https://t.me/planar3", "_blank");
+}
+
 </script>
 
 </body>
 </html>
-
