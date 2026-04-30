@@ -1,3 +1,66 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Мій магазин</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  text-align: center;
+  background: #f5f5f5;
+}
+
+.menu {
+  background: black;
+  padding: 15px;
+}
+
+.menu button {
+  margin: 5px;
+  padding: 10px 20px;
+  color: white;
+  background: gray;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.menu button:hover {
+  background: darkgray;
+}
+
+.product {
+  border: 1px solid #ccc;
+  margin: 15px;
+  padding: 10px;
+  display: inline-block;
+  width: 220px;
+  background: white;
+  border-radius: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- МЕНЮ -->
+<div class="menu">
+  <button onclick="showSection('home')">Привіт</button>
+  <button onclick="showSection('catalog')">Каталог</button>
+  <button onclick="showSection('support')">Підтримка</button>
+</div>
+
+<!-- ГОЛОВНА -->
+<div id="home">
+  <h1>Привіт 👋</h1>
+  <p>Ласкаво просимо в магазин</p>
+</div>
+
+<!-- КАТАЛОГ -->
+<div id="catalog" style="display:none;">
+
 <h2>Каталог товарів</h2>
 
 <div class="product">
@@ -5,7 +68,7 @@
   <h3>Шорти Burberry</h3>
   <p>Розміри: M, L<br>Кольори: чорний, білий</p>
   <p><b>650 грн</b></p>
-  <a href="https://t.me/ТВОЙ_НИК">Написати</a>
+  <a href="https://t.me/planar3">Написати</a>
 </div>
 
 <div class="product">
@@ -13,12 +76,12 @@
   <h3>Шорти Balenciaga x Guess</h3>
   <p>Розміри: M, L<br>Кольори: чорний, білий</p>
   <p><b>1399 грн</b></p>
-  <a href="https://t.me/ТВОЙ_НИК">Написати</a>
+  <a href="https://t.me/planar3">Написати</a>
 </div>
 
 <div class="product">
   <img src="tshirt1.jpg" width="200">
-  <h3>Футболка Hell Star (біла)</h3>
+  <h3>Футболка Hell Star</h3>
   <p>Розміри: S, M</p>
   <p><b>799 грн</b></p>
   <a href="https://t.me/ТВОЙ_НИК">Написати</a>
@@ -26,10 +89,10 @@
 
 <div class="product">
   <img src="tshirt2.jpg" width="200">
-  <h3>Футболка Hell Star (біла)</h3>
+  <h3>Футболка Hell Star</h3>
   <p>Розміри: S, M</p>
   <p><b>799 грн</b></p>
-  <a href="https://t.me/ТВОЙ_НИК">Написати</a>
+  <a href="https://t.me/planar3">Написати</a>
 </div>
 
 <div class="product">
@@ -40,5 +103,29 @@
 </div>
 
 <p style="margin-top:20px;">
-🎁 Без передоплати + знижка 250 грн на наступний товар
+🎁 Без передоплати + знижка 250 грн
 </p>
+
+</div>
+
+<!-- ПІДТРИМКА -->
+<div id="support" style="display:none;">
+  <h2>Підтримка</h2>
+  <p>Пиши нам у Telegram 👇</p>
+  <a href="https://t.me/planar3">Відкрити Telegram</a>
+</div>
+
+<!-- СКРИПТ -->
+<script>
+function showSection(section) {
+  document.getElementById('home').style.display = 'none';
+  document.getElementById('catalog').style.display = 'none';
+  document.getElementById('support').style.display = 'none';
+
+  document.getElementById(section).style.display = 'block';
+}
+</script>
+
+</body>
+</html>
+
