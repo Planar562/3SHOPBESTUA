@@ -2,234 +2,276 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>3BESTSHOP</title>
+<title>3BESTSHOP-UA</title>
 
 <style>
-body {
-  background: black;
-  color: white;
-  font-family: Arial;
-  margin: 0;
-  text-align: center;
+
+body{
+  margin:0;
+  font-family:Arial;
+  background:black;
+  color:white;
 }
 
-/* кнопка назад */
-.back {
-  position: fixed;
-  top: 10px;
-  left: 10px;
+.support{
+  position:fixed;
+  top:10px;
+  right:10px;
+  background:white;
+  color:black;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-/* підтримка */
-.support {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background: white;
-  color: black;
-  padding: 10px;
-  border-radius: 8px;
+.logo{
+  position:fixed;
+  bottom:10px;
+  left:10px;
+  background:white;
+  color:black;
+  padding:10px;
+  border-radius:10px;
 }
 
-/* логотип */
-.logo {
-  position: fixed;
-  bottom: 10px;
-  left: 10px;
-  font-weight: bold;
+.back{
+  position:fixed;
+  top:10px;
+  left:10px;
+  background:white;
+  color:black;
+  padding:10px;
+  border-radius:10px;
+  cursor:pointer;
 }
 
-/* секції */
-.section {
-  display: none;
-  padding-top: 80px;
+.btn{
+  display:block;
+  margin:15px auto;
+  padding:15px;
+  width:220px;
+  background:white;
+  color:black;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  cursor:pointer;
 }
 
-/* кнопки */
-button {
-  background: white;
-  color: black;
-  border: none;
-  padding: 12px;
-  margin: 10px;
-  border-radius: 8px;
-  cursor: pointer;
+.catalog{
+  text-align:center;
+  margin-top:100px;
 }
 
-/* товар */
-.product {
-  border: 1px solid white;
-  padding: 15px;
-  margin: 20px auto;
-  width: 220px;
+.product{
+  background:#111;
+  margin:20px;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
 }
 
-.product img {
-  width: 100%;
+.product img{
+  width:200px;
+  border-radius:10px;
 }
 
-/* розміри */
-.size {
-  display: none;
+/* popup */
+.modal{
+  display:none;
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
 }
+
+.modal-content{
+  margin:auto;
+  margin-top:50px;
+  width:90%;
+  max-width:400px;
+  text-align:center;
+  position:relative;
+}
+
+.modal-img{
+  width:100%;
+  border-radius:10px;
+}
+
+.close{
+  position:absolute;
+  right:10px;
+  top:10px;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.arrow{
+  position:absolute;
+  top:40%;
+  background:white;
+  border:none;
+  font-size:25px;
+  cursor:pointer;
+}
+
+.left{ left:-10px; }
+.right{ right:-10px; }
+
+.instock{
+  color:#00ff66;
+  font-weight:bold;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- назад -->
-<div class="back">
-  <button onclick="showSection('home')">← Назад</button>
-</div>
-
-<!-- підтримка -->
-<div class="support">
-  Підтримка<br>676-6767-6767
-</div>
-
-<!-- логотип -->
-<div class="logo">
-  3BESTSHOP-UA
-</div>
+<div class="support" onclick="alert('Телефон: 676-6767-6767')">Підтримка</div>
+<div class="logo">3BESTSHOP-UA</div>
+<div class="back" onclick="goHome()">←</div>
 
 <!-- ГОЛОВНА -->
-<div id="home" class="section" style="display:block;">
-  <h1>Ласкаво просимо 👋</h1>
-  <button onclick="showSection('catalog')">Каталог</button>
+<div id="home" style="text-align:center;margin-top:150px;">
+<h1>Ласкаво просимо</h1>
+<button class="btn" onclick="openCatalog()">Каталог</button>
 </div>
 
 <!-- КАТАЛОГ -->
-<div id="catalog" class="section">
-  <h2>Каталог</h2>
-
-  <button onclick="showSection('tshirts')">Футболки</button>
-  <button onclick="showSection('shorts')">Шорти</button>
-  <button onclick="showSection('jeans')">Джинси</button>
-  <button onclick="showSection('hoodie')">Кофти</button>
-  <button onclick="showSection('shoes')">Кросівки</button>
+<div id="catalog" class="catalog" style="display:none;">
+<button class="btn" onclick="showSection('tshirts')">Футболки</button>
+<button class="btn" onclick="showSection('shorts')">Шорти</button>
+<button class="btn" onclick="showSection('jeans')">Джинси</button>
+<button class="btn" onclick="showSection('hoodies')">Кофти</button>
+<button class="btn" onclick="showSection('shoes')">Кросівки</button>
 </div>
 
 <!-- ФУТБОЛКИ -->
-<div id="tshirts" class="section">
-  <h2>Футболки</h2>
+<div id="tshirts" style="display:none;">
+<div class="product" onclick="openProduct('Hell Star','Біла. Розміри S,M. 799 грн',['t1.jpg','t2.jpg','t3.jpg','t4.jpg','t5.jpg'])">
+<img src="t1.jpg"><p>Hell Star</p>
+</div>
 
-  <div class="product">
-    <img src="tshirt1.png">
-
-    <p>Футболка Hell Star</p>
-    <p>Ціна: 799 грн</p>
-
-    <button onclick="showSize(this)">Замовити</button>
-
-    <div class="size">
-      <button onclick="buy()">XS</button>
-      <button onclick="buy()">S</button>
-      <button onclick="buy()">M</button>
-      <button onclick="buy()">L</button>
-      <button onclick="buy()">XL</button>
-    </div>
-  </div>
+<div class="product" onclick="openProduct('Hell Star 2','Інша модель. 799 грн',['t6.jpg','t7.jpg','t8.jpg','t9.jpg','t10.jpg'])">
+<img src="t6.jpg"><p>Hell Star 2</p>
+</div>
 </div>
 
 <!-- ШОРТИ -->
-<div id="shorts" class="section">
-  <h2>Шорти</h2>
+<div id="shorts" style="display:none;">
+<div class="product" onclick="openProduct('Burberry','M,L. 650 грн',['s1.jpg','s2.jpg','s3.jpg','s4.jpg','s5.jpg'])">
+<img src="s1.jpg"><p>Burberry</p>
+</div>
 
-  <div class="product">
-    <img src="shorts1.png">
-    <p>Burberry</p>
-    <p>650 грн</p>
-
-    <button onclick="showSize(this)">Замовити</button>
-    <div class="size">
-      <button onclick="buy()">XS</button>
-      <button onclick="buy()">S</button>
-      <button onclick="buy()">M</button>
-      <button onclick="buy()">L</button>
-      <button onclick="buy()">XL</button>
-    </div>
-  </div>
-
-  <div class="product">
-    <img src="shorts2.png">
-    <p>Balenciaga x Guess</p>
-    <p>1399 грн</p>
-
-    <button onclick="showSize(this)">Замовити</button>
-    <div class="size">
-      <button onclick="buy()">XS</button>
-      <button onclick="buy()">S</button>
-      <button onclick="buy()">M</button>
-      <button onclick="buy()">L</button>
-      <button onclick="buy()">XL</button>
-    </div>
-  </div>
+<div class="product" onclick="openProduct('Balenciaga x Guess','M,L. 1399 грн',['s6.jpg','s7.jpg','s8.jpg','s9.jpg','s10.jpg'])">
+<img src="s6.jpg"><p>Balenciaga</p>
+</div>
 </div>
 
 <!-- ДЖИНСИ -->
-<div id="jeans" class="section">
-  <h2>Джинси</h2>
-
-  <div class="product">
-    <img src="jeans1.png">
-    <p>Gallery Dept</p>
-    <p>1199 грн</p>
-
-    <button onclick="showSize(this)">Замовити</button>
-    <div class="size">
-      <button onclick="buy()">XS</button>
-      <button onclick="buy()">S</button>
-      <button onclick="buy()">M</button>
-      <button onclick="buy()">L</button>
-      <button onclick="buy()">XL</button>
-    </div>
-  </div>
+<div id="jeans" style="display:none;">
+<div class="product" onclick="openProduct('Gallery Dept','Сірі. 1199 грн',['j1.jpg','j2.jpg','j3.jpg','j4.jpg','j5.jpg'])">
+<img src="j1.jpg"><p>Gallery Dept</p>
+</div>
 </div>
 
 <!-- КОФТИ -->
-<div id="hoodie" class="section">
-  <h2>Кофти</h2>
-
-  <div class="product">
-    <img src="hoodie1.png">
-    <p>Gucci x Balenciaga</p>
-    <p>1199 грн</p>
-
-    <button onclick="showSize(this)">Замовити</button>
-    <div class="size">
-      <button onclick="buy()">XS</button>
-      <button onclick="buy()">S</button>
-      <button onclick="buy()">M</button>
-      <button onclick="buy()">L</button>
-      <button onclick="buy()">XL</button>
-    </div>
-  </div>
+<div id="hoodies" style="display:none;">
+<div class="product" onclick="openProduct('Gucci x Balenciaga','1199 грн',['h1.jpg','h2.jpg','h3.jpg','h4.jpg','h5.jpg'])">
+<img src="h1.jpg"><p>Gucci x Balenciaga</p>
+</div>
 </div>
 
-<!-- СКРИПТ -->
+<!-- КРОСІВКИ -->
+<div id="shoes" style="display:none;">
+<div class="product" onclick="openProduct('Balenciaga Runner Grey','42-44',['sh1.jpg','sh2.jpg','sh3.jpg','sh4.jpg','sh5.jpg'])">
+<img src="sh1.jpg"><p>Balenciaga Runner</p>
+</div>
+</div>
+
+<!-- POPUP -->
+<div id="productModal" class="modal">
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<button class="arrow left" onclick="prevImage()">❮</button>
+<img id="modalImg" class="modal-img">
+<button class="arrow right" onclick="nextImage()">❯</button>
+
+<h2 id="modalTitle"></h2>
+<p class="instock">В наявності</p>
+<p id="modalDesc"></p>
+
+<button class="btn" onclick="alert('XS S M L XL')">Вибрати розмір</button>
+<button class="btn" onclick="window.open('https://t.me/твій_нік')">Замовити</button>
+
+</div>
+</div>
+
 <script>
-function showSection(id) {
-  let sections = document.querySelectorAll('.section');
-  sections.forEach(function(el) {
-    el.style.display = 'none';
-  });
 
-  let active = document.getElementById(id);
-  if (active) {
-    active.style.display = 'block';
-  }
+let currentPage="home";
+let images=[];
+let current=0;
+
+function openCatalog(){
+hideAll();
+document.getElementById("catalog").style.display="block";
+currentPage="catalog";
 }
 
-function showSize(btn) {
-  btn.nextElementSibling.style.display = 'block';
+function showSection(id){
+hideAll();
+document.getElementById(id).style.display="block";
+currentPage=id;
 }
 
-function buy() {
-  window.open("https://t.me/planar3", "_blank");
+function goHome(){
+if(currentPage==="catalog"){
+hideAll();
+document.getElementById("home").style.display="block";
+currentPage="home";
+}else{
+hideAll();
+document.getElementById("catalog").style.display="block";
+currentPage="catalog";
 }
+}
+
+function hideAll(){
+["home","catalog","tshirts","shorts","jeans","hoodies","shoes"].forEach(id=>{
+document.getElementById(id).style.display="none";
+});
+}
+
+function openProduct(title,desc,imgs){
+images=imgs;
+current=0;
+document.getElementById("modalTitle").innerText=title;
+document.getElementById("modalDesc").innerText=desc;
+document.getElementById("modalImg").src=imgs[0];
+document.getElementById("productModal").style.display="block";
+}
+
+function closeModal(){
+document.getElementById("productModal").style.display="none";
+}
+
+function nextImage(){
+current=(current+1)%images.length;
+document.getElementById("modalImg").src=images[current];
+}
+
+function prevImage(){
+current=(current-1+images.length)%images.length;
+document.getElementById("modalImg").src=images[current];
+}
+
 </script>
 
 </body>
 </html>
-
